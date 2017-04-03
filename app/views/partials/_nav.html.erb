@@ -1,0 +1,26 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">AirSnS</li>
+      <% if user_signed_in? %>
+      <li><%= link_to "Host Rooms", new_room_path, class: "button", type: "button" %></li>
+      <li><%= link_to(current_user.email, edit_user_registration_path) %></li>
+      <% else %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><%= image_tag(url = Gravatar.new(current_user.email).image_url, size: "30") %></li>
+      <li><% if user_signed_in? %>
+      <li>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      </li>
+        <% else %>
+      <li>
+      <%= link_to('Login', new_user_session_path)  %>
+      </li>
+      <% end %></li>
+    </ul>
+  </div>
+</div>
